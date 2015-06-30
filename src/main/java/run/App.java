@@ -24,7 +24,7 @@ public class App {
         Contact contact = (Contact) context.getBean("contact");
 
         Set<Hobby> hobs = contact.getHobbies();
-
+        System.out.println("sdfsdf");
         System.out.println("hobs: " + hobs.size());
 
         for (Hobby hob : hobs) {
