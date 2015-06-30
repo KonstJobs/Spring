@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package account.dao;
 
-import account.Contact;
-import account.Message;
+import account.contact.Contact;
+import account.other.Message;
 import java.util.List;
 
 /**

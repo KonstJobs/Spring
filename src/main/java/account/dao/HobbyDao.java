@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package account.dao;
 
-import account.Contact;
-import account.Place;
+import account.contact.Contact;
+import account.other.Hobby;
 import java.util.Set;
 
 /**
  *
  * @author konst
  */
-public class PlaceDao {
+public class HobbyDao {
 
-    public void addPlace(Place place) {
+    public void addHobby(Hobby hobby) {
     }
 
-    public Set<Contact> getAllContactsForPlace(Place place) {
+    public Set<Contact> getAllContactsWithHobby(Hobby hobby) {
         return null;
     }
 }

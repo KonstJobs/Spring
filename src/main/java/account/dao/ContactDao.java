@@ -19,8 +19,7 @@ import org.springframework.stereotype.Component;
 public class ContactDao {
 
     private List<Contact> contactList = new ArrayList<>();
-    private 
-    
+        
     
     public void addContact(ContactDTO contactDTO) {
         Contact contact = new Contact();
