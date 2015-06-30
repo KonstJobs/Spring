@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+    
+    <bean id="contact" class="account.Contact">
+        <property name="firstName" value="Bob" />
+        <property name="lastName" value="Spanch" />
+        <!--        <property name="birthDate">
+            <bean id="dateFormat" class="java.time.LocalDate">
+                <constructor-arg value="2001-02-02" />
+            </bean>
+        </property> -->
+               
+        <property name="hobbies">
+            <set>
+                <bean class="account.Hobby">
+                    <property name="title" value="Football" />                
+                    <property name="description" value="some test description" />
+                </bean>
+                <bean class="account.Hobby">
+                    <property name="title" value="Baseball" />                
+                    <property name="description" value="some test description for baseball" />
+                </bean>
+            </set>
+        </property>
+        
+        <property name="places" >
+            <set>
+                <bean class="account.Place">
+                    <property name="description" value="some descr" />
+                    <property name="title" value="somewhere" />
+                    <property name="latitude"  value="3.2" />
+                    <property name="longitude" value="8.7" />
+                </bean>
+                <bean class="account.Place">
+                    <property name="description" value="some descr" />
+                    <property name="title" value="somewhere else" />
+                    <property name="latitude"  value="3.2" />
+                    <property name="longitude" value="8.7" />
+                </bean>
+            </set>
+        </property>      
+    
+    </bean>
+    
+    <bean  id="hobby" class="account.Hobby" >
+    </bean>
+    
+    <bean id="hobby1" class="account.Hobby">
+    </bean>
+    
+    <bean id="place" class="account.Place">
+        <property name="latitude" value="3.2" />
+           
+    </bean>
+    
+    
+    
+    <bean id="message" class="account.Message">
+        <property name="from" ref="contact" />
+        <property name="to" ref="contact" />
+    </bean>
+    
+    <!--   ======================================================================-->
+
+    <bean id="contactDao" class="dao.ContactDao">
+    </bean>
+    
+    <bean id="hobbyDao" class="dao.HobbyDao">
+    </bean>
+    
+    <bean id="messageDao" class="dao.MessageDao">
+    </bean>
+    
+    <bean id="placeDao" class="dao.PlaceDao">
+    </bean>
+    
+    
+    
+</beans>
