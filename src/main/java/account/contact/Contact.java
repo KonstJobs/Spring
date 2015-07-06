@@ -5,10 +5,10 @@
  */
 package account.contact;
 
-import account.other.Hobby;
-import account.other.Place;
+import account.hobby.Hobby;
+import account.place.Place;
 import java.time.LocalDate;
-import java.util.Objects;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,6 +22,16 @@ public class Contact {
     private LocalDate birthDate;
     private Set<Hobby> hobbies;
     private Set<Place> places;
+    private String email;
+    private Set<Contact> friends = new HashSet<>();
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -63,28 +73,30 @@ public class Contact {
         this.places = places;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.firstName);
-        hash = 97 * hash + Objects.hashCode(this.lastName);
-        hash = 97 * hash + Objects.hashCode(this.birthDate);
-        hash = 97 * hash + Objects.hashCode(this.hobbies);
-        hash = 97 * hash + Objects.hashCode(this.places);
-        return hash;
+    public void setFriend(Contact contact) {
+        friends.add(contact);
+    }
+
+    public Contact getFriend(String email) {
+
+        for (Contact friend : friends) {
+            if (friend.getEmail().equals(email)) {
+                return friend;
+            }
+        }
+        System.out.println("Friend not found!");
+        return null;
+    }
+
+    public Set<Contact> getFriends() {
+        return friends;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Contact other = (Contact) obj;
-        return true;
+    public String toString() {
+        return "Contact{" + "firstName=" + firstName + ", lastName=" + lastName + '}';
     }
 
-   
+    
+    
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package account.other;
+package accountMessage;
 
 import account.contact.Contact;
 import java.time.LocalDateTime;

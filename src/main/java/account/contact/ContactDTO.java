@@ -5,10 +5,9 @@
  */
 package account.contact;
 
-import account.other.Hobby;
-import account.other.Place;
+import account.hobby.Hobby;
+import account.place.Place;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -22,13 +21,21 @@ public class ContactDTO {
     private final LocalDate birthDate;
     private final Set<Hobby> hobbies;
     private final Set<Place> places;
+    private final String email;
 
-    public ContactDTO(String firstName, String lastName, LocalDate birthDate, Set<Hobby> hobbies, Set<Place> places) {
+    public ContactDTO(String firstName,
+            String lastName,
+            LocalDate birthDate,
+            Set<Hobby> hobbies,
+            Set<Place> places,
+            String email) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.hobbies = hobbies;
         this.places = places;
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -51,42 +58,8 @@ public class ContactDTO {
         return birthDate;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.firstName);
-        hash = 97 * hash + Objects.hashCode(this.lastName);
-        hash = 97 * hash + Objects.hashCode(this.birthDate);
-        hash = 97 * hash + Objects.hashCode(this.hobbies);
-        hash = 97 * hash + Objects.hashCode(this.places);
-        return hash;
+    public String getEmail() {
+        return email;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ContactDTO other = (ContactDTO) obj;
-        if (!Objects.equals(this.firstName, other.firstName)) {
-            return false;
-        }
-        if (!Objects.equals(this.lastName, other.lastName)) {
-            return false;
-        }
-        if (!Objects.equals(this.birthDate, other.birthDate)) {
-            return false;
-        }
-        if (!Objects.equals(this.hobbies, other.hobbies)) {
-            return false;
-        }
-        return Objects.equals(this.places, other.places);
-    }
-
-    
-    
-    
 }

@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package account.other;
+package account.place;
 
 /**
  *
  * @author konst
  */
 public class Place {
-    
+
     private String description;
     private String title;
     private double longitude;
@@ -47,7 +47,5 @@ public class Place {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
-    
-    
-    
+
 }

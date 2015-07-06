@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package account.dao;
+package account.run;
 
-import account.contact.Contact;
-import accountMessage.Message;
-import java.util.List;
 import org.springframework.stereotype.Component;
 
 /**
  *
  * @author konst
  */
-
 @Component
-public class MessageDao {
+public class Dog {
 
-    public void storeMessage(Message message) {
+    String name = "Barsik";
+
+    public String getName() {
+        return name;
     }
 
-    public List<Message> getConversation(Contact contact1, Contact contact2) {
-        return null;
+    public void setName(String name) {
+        this.name = name;
     }
+
 }
