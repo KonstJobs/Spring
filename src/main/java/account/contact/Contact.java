@@ -9,6 +9,7 @@ import account.hobby.Hobby;
 import account.place.Place;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -95,6 +96,25 @@ public class Contact {
     @Override
     public String toString() {
         return "Contact{" + "firstName=" + firstName + ", lastName=" + lastName + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.email);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Contact other = (Contact) obj;
+        return Objects.equals(this.email, other.email);
     }
 
     

@@ -14,6 +14,7 @@ import account.dao.PlaceDao;
 import account.hobby.HobbyDTO;
 import accountMessage.Message;
 import account.place.PlaceDTO;
+import accountMessage.MessageDTO;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,12 @@ public class JavaContactService {
         return contactDao.getAllContacts();
     }
 
-    public void deleteContact(ContactDTO contactDTO) throws Exception {
-        contactDao.deleteContact(contactDTO);
+    public void deleteContact(ContactDTO contactDTO) {
+        try {
+            contactDao.deleteContact(contactDTO);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void addHobby(HobbyDTO hobbyDTO) {
@@ -56,17 +61,23 @@ public class JavaContactService {
     }
 
     public void addFriendship(ContactDTO contactDTO1, ContactDTO contactDTO2) {
-        contactDao.addFriendShip(contactDTO1, contactDTO2);
+        try {
+            contactDao.addFriendShip(contactDTO1, contactDTO2);
+        } catch (Exception ex) {
+            System.out.println("Can't create friendship: " + ex.getMessage());
+        }
     }
 
-    public Set<Contact> getFriendList(Contact contact) {
-
-        return null;
+    public Set<Contact> getFriendList(ContactDTO contactDTO) {
+        return contactDao.getFirendList(contactDTO);
     }
 
-    public List<Message> getConversation() {
+    public List<Message> getConversation(ContactDTO contactDTO1, ContactDTO contactDTO2) {
+        return messageDao.getConversation(contactDTO1, contactDTO2);
+    }
 
-        return null;
+    public void storeMessage(MessageDTO messageDTO) {
+        messageDao.storeMessage(messageDTO);
     }
 
 }

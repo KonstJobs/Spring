@@ -9,6 +9,7 @@ import account.contact.Contact;
 import account.contact.ContactDTO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,7 +24,7 @@ public class ContactDao {
     public void addContact(ContactDTO contactDTO) {
 
         String email = contactDTO.getEmail();
-        boolean isContactPresent = checkContactCreated(email);
+        boolean isContactPresent = checkThatContactCreated(email);
 
         if (contactList.isEmpty() || !isContactPresent) {
 
@@ -62,8 +63,8 @@ public class ContactDao {
 
     public void addFriendShip(ContactDTO contactDTO1, ContactDTO contactDTO2) throws Exception {
 
-        Contact contact1 = getContactByEmail(contactDTO1.getEmail());
-        Contact contact2 = getContactByEmail(contactDTO2.getEmail());
+        Contact contact1 = getContactWithEmail(contactDTO1.getEmail());
+        Contact contact2 = getContactWithEmail(contactDTO2.getEmail());
 
         if (contact1 == null) {
             throw new Exception("Contact " + contact1 + "has not been created!");
@@ -86,13 +87,13 @@ public class ContactDao {
         return contactList;
     }
 
-    private boolean checkContactCreated(String email) {
+    private boolean checkThatContactCreated(String email) {
 
         return contactList.stream().anyMatch((contactList1)
                 -> (contactList1.getEmail().equalsIgnoreCase(email)));
     }
 
-    private Contact getContactByEmail(String email) {
+    public Contact getContactWithEmail(String email) {
 
         for (Contact contact : contactList) {
             String e_mail = contact.getEmail();
@@ -103,5 +104,11 @@ public class ContactDao {
 
         System.out.println("Contact with email '" + email + "' not found!");
         return null;
+    }
+
+    public Set<Contact> getFirendList(ContactDTO contactDTO) {
+        String email = contactDTO.getEmail();
+        Contact contact = getContactWithEmail(email);
+        return contact.getFriends();
     }
 }
