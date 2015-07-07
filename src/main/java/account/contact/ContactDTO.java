@@ -5,8 +5,8 @@
  */
 package account.contact;
 
-import account.hobby.Hobby;
-import account.place.Place;
+import account.hobby.HobbyDTO;
+import account.place.PlaceDTO;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -19,15 +19,15 @@ public class ContactDTO {
     private final String firstName;
     private final String lastName;
     private final LocalDate birthDate;
-    private final Set<Hobby> hobbies;
-    private final Set<Place> places;
+    private final Set<HobbyDTO> hobbies;
+    private final Set<PlaceDTO> places;
     private final String email;
 
     public ContactDTO(String firstName,
             String lastName,
             LocalDate birthDate,
-            Set<Hobby> hobbies,
-            Set<Place> places,
+            Set<HobbyDTO> hobbies,
+            Set<PlaceDTO> places,
             String email) {
 
         this.firstName = firstName;
@@ -46,11 +46,11 @@ public class ContactDTO {
         return lastName;
     }
 
-    public Set<Hobby> getHobbies() {
+    public Set<HobbyDTO> getHobbies() {
         return hobbies;
     }
 
-    public Set<Place> getPlaces() {
+    public Set<PlaceDTO> getPlaces() {
         return places;
     }
 

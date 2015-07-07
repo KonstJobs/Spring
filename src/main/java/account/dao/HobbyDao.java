@@ -55,4 +55,15 @@ public class HobbyDao {
 
         return contactsWithHobby;
     }
+
+    public Hobby getHobbyByTitle(String title) {
+
+        for (Hobby hobby : hoobyList) {
+
+            if (hobby.getTitle().equals(title)) {
+                return hobby;
+            }
+        }
+        return null;
+    }
 }

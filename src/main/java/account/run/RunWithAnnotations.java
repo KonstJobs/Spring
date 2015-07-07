@@ -20,44 +20,41 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  * @author konst
  */
-public class App {
-    
+public class RunWithAnnotations {
+
     public static void main(String[] args) throws Exception {
-        
+
         ApplicationContext context
                 = new ClassPathXmlApplicationContext("Beans.xml");
-        
+
         JavaContactService service = context.getBean(JavaContactService.class);
-        
-        ContactDTO dto1 = new ContactDTO("contact1", "sdf", LocalDate.now(), null, null, "sldfkj@ha-ha-ha-haha-h-a-ha-h-ah-ah-");
-        ContactDTO dto2 = new ContactDTO("contact2", "dfd", LocalDate.now(), null, null, "sldfkj@ываыв");
-        
+
+        service.addHobby(new HobbyDTO("hobby1", "description1"));
+        service.addHobby(new HobbyDTO("hobby2", "description2"));
+
+        service.addPlace(new PlaceDTO("place1", "title1", 6542, 65432));
+        service.addPlace(new PlaceDTO("place2", "title2", 343, 343));
+
+        ContactDTO dto1 = new ContactDTO("name1", "lastname1", LocalDate.now(), null, null, "sldfkj@ha-ha-ha-haha-h-a-ha-h-ah-ah-");
+        ContactDTO dto2 = new ContactDTO("name2", "lastname2", LocalDate.now(), null, null, "sldfkj@ываыв");
+
         service.createContact(dto1);
         service.createContact(dto2);
-        
+
         MessageDTO messageDTO = new MessageDTO(LocalDateTime.now(), dto1, dto2, "bla-bla");
         service.storeMessage(messageDTO);
-        
+
         List<Message> messages = service.getConversation(dto1, dto2);
-        
+
         System.out.println(messages.get(0).getContent());
-        
+
         System.out.println(service.getContacts());
-        
+
         //service.deleteContact(dto2);
-        
         System.out.println(service.getContacts());
-        
-        service.addHobby(new HobbyDTO("title", "descr"));
-        service.addHobby(new HobbyDTO("titldfe", "descrasdf"));
-        
-        service.addPlace(new PlaceDTO("descre", "title", 6542, 65432));
-        service.addPlace(new PlaceDTO("sdf", "sdf", 343, 343));
-        
+
         service.addFriendship(dto1, dto2);
-        
-        
-        
+
         System.out.println(service.getFriendList(dto2));
     }
 }

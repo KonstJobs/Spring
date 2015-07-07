@@ -10,6 +10,7 @@ import account.contact.ContactDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,6 +22,9 @@ public class ContactDao {
 
     private List<Contact> contactList = new ArrayList<>();
 
+    @Autowired
+    private HobbyDao hobbyDao;
+    
     public void addContact(ContactDTO contactDTO) {
 
         String email = contactDTO.getEmail();
