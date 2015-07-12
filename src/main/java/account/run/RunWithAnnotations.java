@@ -24,6 +24,8 @@ public class RunWithAnnotations {
 
     public static void main(String[] args) throws Exception {
 
+        System.out.println("COMMIT IN MASTER");
+        
         ApplicationContext context
                 = new ClassPathXmlApplicationContext("Beans.xml");
 
