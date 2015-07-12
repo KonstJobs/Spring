@@ -23,6 +23,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class RunWithAnnotations {
 
     public static void main(String[] args) throws Exception {
+        
+        System.out.println("TESTING");
 
         System.out.println("COMMIT IN MASTER");
         
