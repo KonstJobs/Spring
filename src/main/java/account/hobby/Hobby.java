@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package account;
+package account.hobby;
 
 /**
  *
  * @author konst
  */
 public class Hobby {
-    
+
     private String title;
     private String description;
 
-    public String getTitle() {
+       public String getTitle() {
         return title;
     }
 
@@ -29,5 +29,5 @@ public class Hobby {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
 }
