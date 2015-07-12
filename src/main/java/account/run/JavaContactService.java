@@ -5,14 +5,12 @@
  */
 package account.run;
 
-import account.contact.Contact;
 import account.contact.ContactDTO;
 import account.dao.ContactDao;
 import account.dao.HobbyDao;
 import account.dao.MessageDao;
 import account.dao.PlaceDao;
 import account.hobby.HobbyDTO;
-import accountMessage.Message;
 import account.place.PlaceDTO;
 import accountMessage.MessageDTO;
 import java.util.List;
@@ -40,7 +38,7 @@ public class JavaContactService {
         contactDao.addContact(contactDTO);
     }
 
-    public List<Contact> getContacts() {
+    public List<ContactDTO> getContacts() {
         return contactDao.getAllContacts();
     }
 
@@ -68,11 +66,11 @@ public class JavaContactService {
         }
     }
 
-    public Set<Contact> getFriendList(ContactDTO contactDTO) {
+    public Set<ContactDTO> getFriendList(ContactDTO contactDTO) {
         return contactDao.getFirendList(contactDTO);
     }
 
-    public List<Message> getConversation(ContactDTO contactDTO1, ContactDTO contactDTO2) {
+    public List<MessageDTO> getConversation(ContactDTO contactDTO1, ContactDTO contactDTO2) {
         return messageDao.getConversation(contactDTO1, contactDTO2);
     }
 

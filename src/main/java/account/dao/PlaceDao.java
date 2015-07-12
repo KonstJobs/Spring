@@ -5,7 +5,7 @@
  */
 package account.dao;
 
-import account.contact.Contact;
+import account.contact.ContactDTO;
 import account.place.Place;
 import account.place.PlaceDTO;
 import java.util.HashSet;
@@ -38,15 +38,15 @@ public class PlaceDao {
 
     }
 
-    public Set<Contact> getAllContactsForPlace(PlaceDTO placeDTO) {
-        Set<Contact> contactsForPlace = new HashSet<>();
-        List<Contact> contacts = contactDao.getAllContacts();
+    public Set<ContactDTO> getAllContactsForPlace(PlaceDTO placeDTO) {
+        Set<ContactDTO> contactsForPlace = new HashSet<>();
+        List<ContactDTO> contacts = contactDao.getAllContacts();
         String placeTitle = placeDTO.getTitle();
 
-        for (Contact contact : contacts) {
-            Set<Place> places = contact.getPlaces();
+        for (ContactDTO contact : contacts) {
+            Set<PlaceDTO> places = contact.getPlaces();
 
-            for (Place place : places) {
+            for (PlaceDTO place : places) {
                 if (place.getTitle().equals(placeTitle)) {
                     contactsForPlace.add(contact);
                     break;

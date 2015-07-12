@@ -95,8 +95,12 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Contact{" + "firstName=" + firstName + ", lastName=" + lastName + '}';
+        return "Contact{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
     }
+
+   
+
+    
 
     @Override
     public int hashCode() {
@@ -117,6 +121,4 @@ public class Contact {
         return Objects.equals(this.email, other.email);
     }
 
-    
-    
 }

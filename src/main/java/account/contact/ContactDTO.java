@@ -62,4 +62,12 @@ public class ContactDTO {
         return email;
     }
 
+    @Override
+    public String toString() {
+        return "ContactDTO{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
+    }
+
+    
+    
+    
 }

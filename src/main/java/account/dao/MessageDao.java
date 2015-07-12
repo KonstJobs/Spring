@@ -38,20 +38,27 @@ public class MessageDao {
 
     }
 
-    public List<Message> getConversation(ContactDTO contactFrom, ContactDTO contactTo) {
-        List<Message> conversation = new ArrayList<>();
+    public List<MessageDTO> getConversation(ContactDTO contactFrom, ContactDTO contactTo) {
+        List<MessageDTO> conversation = new ArrayList<>();
         Contact contFrom = contactDAO.getContactWithEmail(contactFrom.getEmail());
         Contact contTo = contactDAO.getContactWithEmail(contactTo.getEmail());
 
-        messageList.stream().forEach((message) -> {
-            Contact cFrom = message.getFrom();
-            Contact cTo = message.getTo();
-            if (cFrom.equals(contFrom) && cTo.equals(contTo)
-                    || cTo.equals(contFrom) && cFrom.equals(contTo)) {
-                conversation.add(message);
-            }
-        });
+        for (Message message : messageList) {
 
+            Contact c1 = message.getFrom();
+            Contact c2 = message.getTo();
+
+            if (c1.equals(contFrom) && c2.equals(contTo)
+                    || c2.equals(contFrom) && c1.equals(contTo)) {
+
+                MessageDTO messageDTO = new MessageDTO(
+                        message.getDate(),
+                        contactFrom, contactTo, message.getContent());
+
+                conversation.add(messageDTO);
+            }
+        }
         return conversation;
     }
+
 }

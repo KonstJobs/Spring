@@ -14,10 +14,10 @@ import java.time.LocalDateTime;
  */
 public class MessageDTO {
 
-    private LocalDateTime date;
-    private ContactDTO from;
-    private ContactDTO to;
-    private String content;
+    private final LocalDateTime date;
+    private final ContactDTO from;
+    private final ContactDTO to;
+    private final String content;
 
     public MessageDTO(LocalDateTime date, ContactDTO from, ContactDTO to, String content) {
         this.date = date;
@@ -25,6 +25,13 @@ public class MessageDTO {
         this.to = to;
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "MessageDTO{" + "content=" + content + '}';
+    }
+
+    
 
     public LocalDateTime getDate() {
         return date;
@@ -42,4 +49,7 @@ public class MessageDTO {
         return content;
     }
 
+    
+    
+    
 }

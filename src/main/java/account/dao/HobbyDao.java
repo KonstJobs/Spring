@@ -5,7 +5,7 @@
  */
 package account.dao;
 
-import account.contact.Contact;
+import account.contact.ContactDTO;
 import account.hobby.Hobby;
 import account.hobby.HobbyDTO;
 import java.util.HashSet;
@@ -36,16 +36,17 @@ public class HobbyDao {
 
     }
 
-    public Set<Contact> getAllContactsWithHobby(HobbyDTO hobbyDTO) {
+    public Set<ContactDTO> getAllContactsWithHobby(HobbyDTO hobbyDTO) {
 
-        Set<Contact> contactsWithHobby = new HashSet<>();
-        List<Contact> contacts = contactDao.getAllContacts();
+        Set<ContactDTO> contactsWithHobby = new HashSet<>();
+        List<ContactDTO> contacts = contactDao.getAllContacts();
+
         String hobbyTitle = hobbyDTO.getTitle();
 
-        for (Contact contact : contacts) {
-            Set<Hobby> hobbies = contact.getHobbies();
+        for (ContactDTO contact : contacts) {
+            Set<HobbyDTO> hobbies = contact.getHobbies();
 
-            for (Hobby hobby : hobbies) {
+            for (HobbyDTO hobby : hobbies) {
                 if (hobby.getTitle().equals(hobbyTitle)) {
                     contactsWithHobby.add(contact);
                     break;
@@ -56,14 +57,4 @@ public class HobbyDao {
         return contactsWithHobby;
     }
 
-    public Hobby getHobbyByTitle(String title) {
-
-        for (Hobby hobby : hoobyList) {
-
-            if (hobby.getTitle().equals(title)) {
-                return hobby;
-            }
-        }
-        return null;
-    }
 }
