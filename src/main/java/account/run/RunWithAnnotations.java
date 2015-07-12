@@ -8,7 +8,7 @@ package account.run;
 import account.contact.ContactDTO;
 import account.hobby.HobbyDTO;
 import account.place.PlaceDTO;
-import accountMessage.MessageDTO;
+import account.message.MessageDTO;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;

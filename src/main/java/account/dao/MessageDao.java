@@ -7,8 +7,8 @@ package account.dao;
 
 import account.contact.Contact;
 import account.contact.ContactDTO;
-import accountMessage.Message;
-import accountMessage.MessageDTO;
+import account.message.Message;
+import account.message.MessageDTO;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -12,7 +12,7 @@ import account.dao.MessageDao;
 import account.dao.PlaceDao;
 import account.hobby.HobbyDTO;
 import account.place.PlaceDTO;
-import accountMessage.MessageDTO;
+import account.message.MessageDTO;
 import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
