@@ -23,11 +23,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class RunWithAnnotations {
 
     public static void main(String[] args) throws Exception {
-        
-        System.out.println("TESTING");
 
-        System.out.println("COMMIT IN MASTER");
-        
         ApplicationContext context
                 = new ClassPathXmlApplicationContext("Beans.xml");
 
@@ -42,18 +38,17 @@ public class RunWithAnnotations {
 
         service.addHobby(hobbyDTO1);
         service.addHobby(hobbyDTO2);
-        
-        
+
         // create place 
         PlaceDTO placeDTO1 = new PlaceDTO("description1", "title1", 12346, 65020);
         PlaceDTO placeDTO2 = new PlaceDTO("description2", "title2", 12346.13, 65020.235);
         Set<PlaceDTO> placeSet = new HashSet<>();
         placeSet.add(placeDTO1);
         placeSet.add(placeDTO2);
-        
+
         service.addPlace(placeDTO1);
         service.addPlace(placeDTO2);
-        
+
         // create contact1
         ContactDTO contact1 = new ContactDTO(
                 "name1",
@@ -80,24 +75,23 @@ public class RunWithAnnotations {
             System.out.println(contact);
         });
 
-        
         //add friendship
         service.addFriendship(contact1, contact2);
-    
+
         System.out.println("friend list: " + service.getFriendList(contact2));
         System.out.println("friend list: " + service.getFriendList(contact1));
-        
+
         // message
         MessageDTO messageDTO1 = new MessageDTO(LocalDateTime.now(), contact1, contact2, "content1");
         MessageDTO messageDTO2 = new MessageDTO(LocalDateTime.now(), contact1, contact2, "content2");
         MessageDTO messageDTO3 = new MessageDTO(LocalDateTime.now(), contact1, contact2, "content3");
-        
+
         service.storeMessage(messageDTO1);
         service.storeMessage(messageDTO2);
         service.storeMessage(messageDTO3);
-    
-        System.out.println("conversation: " 
-         + service.getConversation(contact1, contact2));
-    
+
+        System.out.println("conversation: "
+                + service.getConversation(contact1, contact2));
+
     }
 }
