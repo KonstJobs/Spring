@@ -26,8 +26,14 @@ public class JavaContactService {
     private HobbyDao hobbyDao;
     private PlaceDao placeDao;
     private MessageDao messageDao;
+    
+    
+    
 
     public void createContact(ContactDTO contactDTO) {
+    
+        System.out.println("1. add new folder");
+        
         contactDao.addContact(contactDTO);
     }
 
