@@ -32,6 +32,8 @@ public class JavaContactService {
     }
 
     public List<ContactDTO> getContacts() {
+        
+        System.out.println("git commit -a -m 'fixed the broken email address'");
         return contactDao.getAllContacts();
     }
 
