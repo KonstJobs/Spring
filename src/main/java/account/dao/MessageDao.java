@@ -21,6 +21,10 @@ public class MessageDao {
     List<Message> messageList = new ArrayList<>();
     private ContactDao contactDao;
 
+    public MessageDao(ContactDao contactDao) {
+        this.contactDao = contactDao;
+    }
+
     public void storeMessage(MessageDTO messageDTO) {
 
         Message message = new Message();

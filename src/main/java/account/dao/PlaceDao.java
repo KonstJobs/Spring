@@ -21,6 +21,10 @@ public class PlaceDao {
     private Set<Place> placeList = new HashSet<>();
     private ContactDao contactDao;
 
+    public PlaceDao(ContactDao contactDao) {
+        this.contactDao = contactDao;
+    }
+
     public void addPlace(PlaceDTO placeDTO) {
 
         Place place = new Place();

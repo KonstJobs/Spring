@@ -21,6 +21,10 @@ public class HobbyDao {
     private Set<Hobby> hoobyList = new HashSet<>();
     private ContactDao contactDao;
 
+    public HobbyDao(ContactDao contactDao) {
+        this.contactDao = contactDao;
+    }
+
     public void addHobby(HobbyDTO hobbyDTO) {
 
         Hobby hobby = new Hobby();

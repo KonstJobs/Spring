@@ -20,7 +20,6 @@ import java.util.Set;
  *
  * @author konst
  */
-
 public class JavaContactService {
 
     private ContactDao contactDao;
@@ -87,8 +86,5 @@ public class JavaContactService {
     public void setMessageDao(MessageDao messageDao) {
         this.messageDao = messageDao;
     }
-    
-    
-    
 
 }
