@@ -11,19 +11,15 @@ import account.hobby.HobbyDTO;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author konst
  */
-@Component
+
 public class HobbyDao {
 
     private Set<Hobby> hoobyList = new HashSet<>();
-
-    @Autowired
     private ContactDao contactDao;
 
     public void addHobby(HobbyDTO hobbyDTO) {

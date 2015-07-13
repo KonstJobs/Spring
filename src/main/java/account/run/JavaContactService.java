@@ -15,23 +15,16 @@ import account.place.PlaceDTO;
 import account.message.MessageDTO;
 import java.util.List;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  *
  * @author konst
  */
-@Service
 public class JavaContactService {
 
-    @Autowired
     private ContactDao contactDao;
-    @Autowired
     private HobbyDao hobbyDao;
-    @Autowired
     private PlaceDao placeDao;
-    @Autowired
     private MessageDao messageDao;
 
     public void createContact(ContactDTO contactDTO) {

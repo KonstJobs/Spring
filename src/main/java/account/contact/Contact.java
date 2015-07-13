@@ -98,10 +98,6 @@ public class Contact {
         return "Contact{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
     }
 
-   
-
-    
-
     @Override
     public int hashCode() {
         int hash = 7;

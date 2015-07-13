@@ -11,7 +11,6 @@ import account.message.Message;
 import account.message.MessageDTO;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,8 +21,6 @@ import org.springframework.stereotype.Component;
 public class MessageDao {
 
     List<Message> messageList = new ArrayList<>();
-
-    @Autowired
     private ContactDao contactDAO;
 
     public void storeMessage(MessageDTO messageDTO) {
