@@ -16,20 +16,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author konst
  */
-@Component
 public class ContactDao {
 
     private List<Contact> contactList = new ArrayList<>();
-
-    @Autowired
-    private HobbyDao hobbyDao;
 
     public void addContact(ContactDTO contactDTO) {
 

@@ -15,23 +15,17 @@ import account.place.PlaceDTO;
 import account.message.MessageDTO;
 import java.util.List;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  *
  * @author konst
  */
-@Service
+
 public class JavaContactService {
 
-    @Autowired
     private ContactDao contactDao;
-    @Autowired
     private HobbyDao hobbyDao;
-    @Autowired
     private PlaceDao placeDao;
-    @Autowired
     private MessageDao messageDao;
 
     public void createContact(ContactDTO contactDTO) {
@@ -77,5 +71,24 @@ public class JavaContactService {
     public void storeMessage(MessageDTO messageDTO) {
         messageDao.storeMessage(messageDTO);
     }
+
+    public void setContactDao(ContactDao contactDao) {
+        this.contactDao = contactDao;
+    }
+
+    public void setHobbyDao(HobbyDao hobbyDao) {
+        this.hobbyDao = hobbyDao;
+    }
+
+    public void setPlaceDao(PlaceDao placeDao) {
+        this.placeDao = placeDao;
+    }
+
+    public void setMessageDao(MessageDao messageDao) {
+        this.messageDao = messageDao;
+    }
+    
+    
+    
 
 }

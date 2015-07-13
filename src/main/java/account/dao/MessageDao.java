@@ -11,28 +11,23 @@ import account.message.Message;
 import account.message.MessageDTO;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author konst
  */
-@Component
 public class MessageDao {
 
     List<Message> messageList = new ArrayList<>();
-
-    @Autowired
-    private ContactDao contactDAO;
+    private ContactDao contactDao;
 
     public void storeMessage(MessageDTO messageDTO) {
 
         Message message = new Message();
         message.setContent(messageDTO.getContent());
         message.setDate(messageDTO.getDate());
-        message.setFrom(contactDAO.getContactWithEmail(messageDTO.getFrom().getEmail()));
-        message.setTo(contactDAO.getContactWithEmail(messageDTO.getTo().getEmail()));
+        message.setFrom(contactDao.getContactWithEmail(messageDTO.getFrom().getEmail()));
+        message.setTo(contactDao.getContactWithEmail(messageDTO.getTo().getEmail()));
 
         messageList.add(message);
 
@@ -40,8 +35,8 @@ public class MessageDao {
 
     public List<MessageDTO> getConversation(ContactDTO contactFrom, ContactDTO contactTo) {
         List<MessageDTO> conversation = new ArrayList<>();
-        Contact contFrom = contactDAO.getContactWithEmail(contactFrom.getEmail());
-        Contact contTo = contactDAO.getContactWithEmail(contactTo.getEmail());
+        Contact contFrom = contactDao.getContactWithEmail(contactFrom.getEmail());
+        Contact contTo = contactDao.getContactWithEmail(contactTo.getEmail());
 
         for (Message message : messageList) {
 
@@ -60,5 +55,11 @@ public class MessageDao {
         }
         return conversation;
     }
+
+    public void setContactDao(ContactDao contactDao) {
+        this.contactDao = contactDao;
+    }
+    
+    
 
 }
