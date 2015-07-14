@@ -26,21 +26,17 @@ public class JavaContactService {
     private HobbyDao hobbyDao;
     private PlaceDao placeDao;
     private MessageDao messageDao;
-    
-    
-    
 
     public void createContact(ContactDTO contactDTO) {
-    
-        System.out.println("1. add new folder");
-        System.out.println("2. add 2 files");
-        
-        contactDao.addContact(contactDTO);
+
+        try {
+            contactDao.addContact(contactDTO);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public List<ContactDTO> getContacts() {
-        
-        System.out.println("git commit -a -m 'fixed the broken email address'");
         return contactDao.getAllContacts();
     }
 
