@@ -67,7 +67,4 @@ public class ContactDTO {
         return "ContactDTO{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
     }
 
-    
-    
-    
 }
