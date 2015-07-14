@@ -66,8 +66,5 @@ public class ContactDTO {
     public String toString() {
         return "ContactDTO{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
     }
-
-    
-    
     
 }
