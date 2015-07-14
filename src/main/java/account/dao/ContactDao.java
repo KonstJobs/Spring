@@ -25,26 +25,25 @@ public class ContactDao {
 
     private List<Contact> contactList = new ArrayList<>();
 
-    public void addContact(ContactDTO contactDTO) {
+    public void addContact(ContactDTO contactDTO) throws Exception {
 
         String email = contactDTO.getEmail();
-        boolean isContactPresent = checkThatContactCreated(email);
+        boolean isContactPresent = checkThatContactCreated(contactDTO);
 
-        if (contactList.isEmpty() || !isContactPresent) {
-
-            Contact contact = new Contact();
-            contact.setFirstName(contactDTO.getFirstName());
-            contact.setLastName(contactDTO.getLastName());
-            contact.setBirthDate(contactDTO.getBirthDate());
-            contact.setHobbies(createHobbies(contactDTO.getHobbies()));
-            contact.setPlaces(createPlaces(contactDTO.getPlaces()));
-            contact.setEmail(email);
-
-            contactList.add(contact);
-            System.out.println("Added contact : " + contact);
-        } else {
-            System.out.println("Contact with email " + email + " has allready created");
+        if (isContactPresent) {
+            throw new Exception("Contact with email " + email + " has allready created");
         }
+
+        Contact contact = new Contact();
+        contact.setFirstName(contactDTO.getFirstName());
+        contact.setLastName(contactDTO.getLastName());
+        contact.setBirthDate(contactDTO.getBirthDate());
+        contact.setHobbies(createHobbies(contactDTO.getHobbies()));
+        contact.setPlaces(createPlaces(contactDTO.getPlaces()));
+        contact.setEmail(email);
+
+        contactList.add(contact);
+        System.out.println("Added contact : " + contact);
     }
 
     public void deleteContact(ContactDTO contactDTO) throws Exception {
@@ -83,8 +82,20 @@ public class ContactDao {
 
     }
 
-    public void removeFriendShip(ContactDTO contactDTO1, ContactDTO contactDTO2) {
+    public void removeFriendShip(ContactDTO contactDTO1, ContactDTO contactDTO2) throws Exception {
+        Contact contact1 = getContactWithEmail(contactDTO1.getEmail());
+        Contact contact2 = getContactWithEmail(contactDTO2.getEmail());
 
+        if (contact1 == null) {
+            throw new Exception("Contact " + contact1 + "has not been created!");
+        }
+
+        if (contact2 == null) {
+            throw new Exception("Contact " + contact1 + "has not been created!");
+        }
+
+        contact1.getFriends().remove(contact2);
+        contact2.getFriends().remove(contact1);
     }
 
     public List<ContactDTO> getAllContacts() {
@@ -103,7 +114,9 @@ public class ContactDao {
         return contacts;
     }
 
-    private boolean checkThatContactCreated(String email) {
+    private boolean checkThatContactCreated(ContactDTO contactDTO) {
+
+        String email = contactDTO.getEmail();
 
         return contactList.stream().anyMatch((contactList1)
                 -> (contactList1.getEmail().equalsIgnoreCase(email)));

@@ -28,7 +28,11 @@ public class JavaContactService {
     private MessageDao messageDao;
 
     public void createContact(ContactDTO contactDTO) {
-        contactDao.addContact(contactDTO);
+        try {
+            contactDao.addContact(contactDTO);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public List<ContactDTO> getContacts() {
