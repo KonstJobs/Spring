@@ -54,14 +54,6 @@ public class JavaContactService {
         }
     }
 
-    public void addHobby(HobbyDTO hobbyDTO) {
-        hobbyDao.addHobby(hobbyDTO);
-    }
-
-    public void addPlace(PlaceDTO placeDTO) {
-        placeDao.addPlace(placeDTO);
-    }
-
     public void addFriendship(ContactDTO contactDTO1, ContactDTO contactDTO2) {
         try {
             contactDao.addFriendShip(contactDTO1, contactDTO2);
@@ -76,6 +68,14 @@ public class JavaContactService {
 
     public List<MessageDTO> getConversation(ContactDTO contactDTO1, ContactDTO contactDTO2) {
         return messageDao.getConversation(contactDTO1, contactDTO2);
+    }
+
+    public void addHobby(HobbyDTO hobbyDTO) {
+        hobbyDao.addHobby(hobbyDTO);
+    }
+
+    public void addPlace(PlaceDTO placeDTO) {
+        placeDao.addPlace(placeDTO);
     }
 
     public void storeMessage(MessageDTO messageDTO) {

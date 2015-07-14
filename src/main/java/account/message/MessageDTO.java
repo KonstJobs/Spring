@@ -7,6 +7,7 @@ package account.message;
 
 import account.contact.ContactDTO;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  *
@@ -47,6 +48,37 @@ public class MessageDTO {
 
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.date);
+        hash = 37 * hash + Objects.hashCode(this.from);
+        hash = 37 * hash + Objects.hashCode(this.to);
+        hash = 37 * hash + Objects.hashCode(this.content);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MessageDTO other = (MessageDTO) obj;
+        if (!Objects.equals(this.date, other.date)) {
+            return false;
+        }
+        if (!Objects.equals(this.from, other.from)) {
+            return false;
+        }
+        if (!Objects.equals(this.to, other.to)) {
+            return false;
+        }
+        return Objects.equals(this.content, other.content);
     }
 
     

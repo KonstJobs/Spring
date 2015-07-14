@@ -82,11 +82,11 @@ public class ContactDao {
         Contact contact2 = getContactWithEmail(contactDTO2.getEmail());
 
         if (contact1 == null) {
-            throw new Exception("Contact " + contact1 + "has not been created!");
+            throw new Exception("Contact1 " + contact1 + " has not been created!");
         }
 
         if (contact2 == null) {
-            throw new Exception("Contact " + contact1 + "has not been created!");
+            throw new Exception("Contact " + contact1 + " has not been created!");
         }
 
         contact1.setFriend(contact2);

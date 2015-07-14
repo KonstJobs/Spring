@@ -8,6 +8,7 @@ package account.contact;
 import account.hobby.HobbyDTO;
 import account.place.PlaceDTO;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -67,4 +68,25 @@ public class ContactDTO {
         return "ContactDTO{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + '}';
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.email);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ContactDTO other = (ContactDTO) obj;
+        return Objects.equals(this.email, other.email);
+    }
+
+    
+    
 }
