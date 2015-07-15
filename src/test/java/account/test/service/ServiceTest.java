@@ -18,6 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 /*
@@ -118,6 +119,17 @@ public class ServiceTest extends AbstractTestNGSpringContextTests {
 
     }
 
+    @AfterMethod
+    public void deleteConatacs() {
+        List<ContactDTO> contacts = service.getContacts();
+        for (ContactDTO contact : contacts) {
+            service.deleteContact(contact);
+        }
+    }
+
+    //==========================================================================
+    //
+    //==========================================================================
     private ContactDTO createContact1() {
 
         ContactDTO contact1 = new ContactDTO(

@@ -128,12 +128,7 @@ public class ContactDao {
         return contacts;
     }
 
-    private boolean checkThatContactCreated(ContactDTO contactDTO) {
-
-        String email = contactDTO.getEmail();
-        return contactList.stream().anyMatch((contactList1)
-                -> (contactList1.getEmail().equalsIgnoreCase(email)));
-    }
+    
 
     public Contact getContactWithEmail(String email) {
 
@@ -152,6 +147,14 @@ public class ContactDao {
         String email = contactDTO.getEmail();
         Contact contact = getContactWithEmail(email);
         return createContactsDTO(contact.getFriends());
+    }
+    
+    
+    private boolean checkThatContactCreated(ContactDTO contactDTO) {
+
+        String email = contactDTO.getEmail();
+        return contactList.stream().anyMatch((contactList1)
+                -> (contactList1.getEmail().equalsIgnoreCase(email)));
     }
 
     private Set<Hobby> createHobbies(Set<HobbyDTO> hobbyDTO) {

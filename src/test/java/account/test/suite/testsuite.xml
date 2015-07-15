@@ -10,10 +10,10 @@
     </test>
 
 
-    <!--    <test name="dao">
+    <test name="dao">
         <packages>
             <package name="account.test.dao"/>
         </packages>
-    </test>-->
+    </test>
 
 </suite>
